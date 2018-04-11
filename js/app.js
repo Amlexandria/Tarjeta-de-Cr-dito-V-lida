@@ -2,6 +2,7 @@ var digitsInAscii = [];
 var asciiToString = [];
 var stringsToNumbers = [];
 var multipliedPair = [];
+var numbersInOddPosition = [];
 
 
 function isValidCard(){
@@ -37,14 +38,24 @@ function isValidCard(){
               }//for j
               console.log(stringsToNumbers);
 
-              for (var k = 0 ; k < stringsToNumbers; k ++){//Buscando las posiciones pares e impares dentro del array
+              for (var k = 0 ; k < stringsToNumbers.length; k ++){//Buscando las posiciones pares e impares dentro del array
                   if(k % 2 !== 0){//para acceder a las posiciones pares tengo que acceder a los index de numero impar
-                    var multiplication = stringsToNumbers[k] * 2;
-                    multipliedPair.push(multiplication);
-                    console.log (multipliedPair);
+                      var multiplication = stringsToNumbers[k] * 2;//multiplicando por 2 el elemento en posicion  par
+                      multipliedPair.push(multiplication);// agregando el elemento multiplicado al array multipliedPair
+                      console.log (multipliedPair);
+
+                          for(var l = 0; l < multipliedPair.length; l++){//sumando los dos digitos del resultado de la multiplicacion (en caso de presentarse dicha situacion)
+                              if(l >= 10){
+                                 var reduceToOneDigit = (multipliedPair[l] - 10) + 1;
+                              }//if
+                          }//for l
+
+                  } else{
+                      numbersInOddPosition.push(stringsToNumbers[k]);//agregando elementos en posicion impar al array numbersInOddPosition
+                      console.log(numbersInOddPosition);
 
 
-                  }//if
+                    }//else
 
               }//for k
 
