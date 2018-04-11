@@ -1,6 +1,7 @@
 var digitsInAscii = [];
 var asciiToString = [];
 var stringsToNumbers = [];
+var multipliedPair = [];
 
 
 function isValidCard(){
@@ -11,15 +12,13 @@ function isValidCard(){
         var cardNumbers = prompt("Ingrese por favor los 16 dígitos de su tarjeta de crédito:");
         if( cardNumbers.length != 16 || cardNumbers == " " ){ //validando que el usuario no ingrese un string vacío, ni más o menos de 16 dígitos
             alert("Por favor ingrese 16 digitos:");
-        }//if
-        else{
+        } else{
             for( var i = 0; i < cardNumbers.length; i++){
                   var ascii = cardNumbers.charCodeAt(i);
                   if ( ascii >= 48 && ascii <= 57 ){
                     digitsInAscii.push( ascii );//agregando a un array los números en Ascci correspondientes a los dígitos ingresados.
-                  }//if
-
-                  else { //validando que los dígitos ingresados sean solamente números
+                  } else {
+                    //validando que los dígitos ingresados sean solamente números
                     alert("Por favor ingrese solamente dígitos del 0 al 9:");
                     break;
                   }//else
@@ -36,9 +35,18 @@ function isValidCard(){
                 stringsToNumbers.push(parseInt(asciiToString[j]));// Componiendo array con los strings convertidos a numbers
 
               }//for j
-
               console.log(stringsToNumbers);
 
+              for (var k = 0 ; k < stringsToNumbers; k ++){//Buscando las posiciones pares e impares dentro del array
+                  if(k % 2 !== 0){//para acceder a las posiciones pares tengo que acceder a los index de numero impar
+                    var multiplication = stringsToNumbers[k] * 2;
+                    multipliedPair.push(multiplication);
+                    console.log (multipliedPair);
+
+
+                  }//if
+
+              }//for k
 
         }//else
 
